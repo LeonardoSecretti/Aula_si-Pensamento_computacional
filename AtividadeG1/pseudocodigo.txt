@@ -1,0 +1,53 @@
+ 1. Entradas e Saídas do Sistema
+ Entradas (o que o sistema recebe)
+•	Botão iniciar - comando do operador 
+•	Potenciômetro 1 (tempo) - valor de 0 a 1023 
+•	Potenciômetro 2 (intensidade) - valor de 0 a 1023 
+ Saídas (o que o sistema controla)
+•	LED vermelho - sistema parado 
+•	LED amarelo - processo em execução 
+•	LED verde - processo finalizado 
+•	3 LEDs de intensidade -indicam nível (baixo, médio, alto) 
+
+ 2. Componentes do Sistema
+•	Botão 
+Serve para iniciar o processo 
+•	Potenciômetro de tempo 
+Define quanto tempo o processo vai durar (1 a 10 segundos) 
+•	Potenciômetro de intensidade 
+Define a “força” do processo (baixo, médio, alto) 
+•	LED vermelho 
+Indica que o sistema está parado 
+•	LED amarelo 
+Indica que o processo está rodando 
+•	LED verde 
+Indica que terminou 
+•	LEDs de intensidade (3) 
+Mostram o nível escolhido: 
+1 LED - baixo 
+2 LEDs - médio 
+3 LEDs - alto 
+•	Controlador (Arduino ou similar) 
+Responsável por ler entradas e controlar tudo 
+ 3. Regras de Funcionamento
+ Estado parado
+LED vermelho ligado 
+Esperando o botão ser pressionado 
+Ao pressionar o botão
+1.	Lê os dois potenciômetros 
+2.	Converte o valor do tempo: 
+0 → 1 segundo 
+1023 → 10 segundos
+(interpolação linear) 
+3.	Define a intensidade (baixo/médio/alto) 
+4.	Inicia o processo 
+ Durante execução
+•	LED amarelo ligado 
+•	LED vermelho apagado 
+•	LED verde apagado 
+•	LEDs de intensidade mostram o nível escolhido no início 
+•	Ignora mudanças nos potenciômetros 
+ Ao terminar
+•	LED amarelo apaga 
+•	LED verde acende 
+•	Depois volta para estado inicial (vermelho ligado) 
